@@ -19,7 +19,5 @@ namespace Poliklinika_kurs.Models
 
         [StringLength(50)]
         public string expirience { get; set; }
-
-        public virtual Users Users { get; set; }
     }
 }

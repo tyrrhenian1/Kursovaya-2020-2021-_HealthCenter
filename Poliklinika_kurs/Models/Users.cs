@@ -17,9 +17,5 @@ namespace Poliklinika_kurs.Models
         public string password { get; set; }
 
         public int? type { get; set; }
-
-        public virtual Doctors Doctors { get; set; }
-
-        public virtual Pacients Pacients { get; set; }
     }
 }

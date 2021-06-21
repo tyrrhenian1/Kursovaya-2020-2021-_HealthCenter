@@ -12,6 +12,7 @@ namespace Poliklinika_kurs.Models
         {
         }
 
+        public virtual DbSet<DiagnosticIn> DiagnosticIn { get; set; }
         public virtual DbSet<Doctors> Doctors { get; set; }
         public virtual DbSet<Pacients> Pacients { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
@@ -19,6 +20,18 @@ namespace Poliklinika_kurs.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<DiagnosticIn>()
+                .Property(e => e.doctor)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DiagnosticIn>()
+                .Property(e => e.pacient)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DiagnosticIn>()
+                .Property(e => e.diagnostic)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Doctors>()
                 .Property(e => e.name)
                 .IsUnicode(false);
@@ -46,14 +59,6 @@ namespace Poliklinika_kurs.Models
             modelBuilder.Entity<Users>()
                 .Property(e => e.password)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Users>()
-                .HasOptional(e => e.Doctors)
-                .WithRequired(e => e.Users);
-
-            modelBuilder.Entity<Users>()
-                .HasOptional(e => e.Pacients)
-                .WithRequired(e => e.Users);
         }
     }
 }
