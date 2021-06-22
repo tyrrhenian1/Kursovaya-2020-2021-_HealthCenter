@@ -56,6 +56,10 @@ namespace Poliklinika_kurs.Models
                 .Property(e => e.pacient)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<RegistrationDoc>()
+                .Property(e => e.verdict)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Users>()
                 .Property(e => e.login)
                 .IsUnicode(false);

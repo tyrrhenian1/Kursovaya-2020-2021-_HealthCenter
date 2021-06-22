@@ -26,5 +26,8 @@ namespace Poliklinika_kurs.Models
         public int? doctor_id { get; set; }
 
         public int? pacient_id { get; set; }
+
+        [StringLength(50)]
+        public string verdict { get; set; }
     }
 }

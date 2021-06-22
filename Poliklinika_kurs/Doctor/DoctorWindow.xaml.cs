@@ -20,26 +20,29 @@ namespace Poliklinika_kurs.Doctor
     /// </summary>
     public partial class DoctorWindow : Window
     {
-        private int UserId { get; set; }
+        private int _userId;
         public DoctorWindow(int id)
         {
             InitializeComponent();
-            UserId = id;
+            _userId = id;
             using (Modeldb db = new Modeldb())
             {
                 var query = from a in db.Doctors
-                            where UserId == a.id
+                            where _userId == a.id
                             select a;
-                if(query.Count() != 0)
-                {
                     foreach(var i in query)
                     {
                         nameBox.Content = i.name;
                         specializationBox.Content = i.specialization;
                         expirienceBox.Content = i.expirience;
                     }
-                }
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ListToDoc toDoc = new ListToDoc(_userId);
+            toDoc.Show();
         }
     }
 }
