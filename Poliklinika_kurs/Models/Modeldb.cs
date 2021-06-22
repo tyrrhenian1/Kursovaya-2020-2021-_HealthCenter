@@ -8,47 +8,18 @@ namespace Poliklinika_kurs.Models
     public partial class Modeldb : DbContext
     {
         public Modeldb()
-            : base("name=Modeldb2")
+            : base("name=Modeldb")
         {
         }
 
-        public virtual DbSet<checkTime> checkTime { get; set; }
-        public virtual DbSet<DiagnosticIn> DiagnosticIn { get; set; }
         public virtual DbSet<Doctors> Doctors { get; set; }
         public virtual DbSet<Pacients> Pacients { get; set; }
+        public virtual DbSet<RegistrationDoc> RegistrationDoc { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<checkTime>()
-                .Property(e => e.date)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<checkTime>()
-                .Property(e => e.time)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<DiagnosticIn>()
-                .Property(e => e.date)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<DiagnosticIn>()
-                .Property(e => e.time)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<DiagnosticIn>()
-                .Property(e => e.doctor)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<DiagnosticIn>()
-                .Property(e => e.pacient)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<DiagnosticIn>()
-                .Property(e => e.status)
-                .IsUnicode(false);
-
             modelBuilder.Entity<Doctors>()
                 .Property(e => e.name)
                 .IsUnicode(false);
@@ -67,6 +38,22 @@ namespace Poliklinika_kurs.Models
 
             modelBuilder.Entity<Pacients>()
                 .Property(e => e.adress)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<RegistrationDoc>()
+                .Property(e => e.date)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<RegistrationDoc>()
+                .Property(e => e.time)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<RegistrationDoc>()
+                .Property(e => e.doctor)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<RegistrationDoc>()
+                .Property(e => e.pacient)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Users>()

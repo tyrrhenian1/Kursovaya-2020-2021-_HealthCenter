@@ -29,31 +29,6 @@ namespace Poliklinika_kurs.User
             userId = id;
             Update();
         }
-
-        private void filterSpec_Click(object sender, RoutedEventArgs e)
-        {
-            if (filterSpec.IsChecked == true)
-            {
-                specializationBox.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                specializationBox.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void filterFio_Click(object sender, RoutedEventArgs e)
-        {
-            if (filterFio.IsChecked == true)
-            {
-                fioBox.Visibility = Visibility.Visible;
-
-            }
-            else
-            {
-                fioBox.Visibility = Visibility.Hidden;
-            }
-        }
         private void Update()
         {
             using (Modeldb db = new Modeldb())
@@ -160,25 +135,21 @@ namespace Poliklinika_kurs.User
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (!(dateReg.SelectedDate < DateTime.Now))
+            if (dateReg.SelectedDate != null &&
+                !(dateReg.SelectedDate < DateTime.Now) &&
+                doctorList.SelectedIndex != -1 &&
+                timeReg.SelectedItem != null)
             {
                 using (Modeldb db = new Modeldb())
                 {
                     string dateRegistration = dateReg.SelectedDate.ToString().Substring(0, 10);
-                    var doctor = from b in db.Doctors
-                                 where doctorId == b.id
-                                 select b.name;
-                    doctorFio.Text = doctor.FirstOrDefault().ToString();
-                    
-                    var checkQuery = from c in db.DiagnosticIn
-                                     select c;
-                    foreach (var i in checkQuery)
+                    var checkDate = from a in db.RegistrationDoc
+                                    where dateRegistration.Equals(a.date)
+                                     select a;
+                    foreach (var i in checkDate)
                     {
-                        label1.Content = dateRegistration.Equals(i.date);
-                        label2.Content = i.time.Equals(timeReg.Text);
-                        label3.Content = doctorId == i.id;
-                        label4.Text += dateRegistration + "   " + i.date + Environment.NewLine + timeReg.Text + "   " + i.time + Environment.NewLine + doctorId + "    " + i.id + Environment.NewLine;
-                        if (dateRegistration.Equals(i.date) && i.time.Equals(timeReg.Text) && doctorId == i.doctor_id)
+                        if (i.time.Equals(timeReg.Text) && 
+                            doctorId == i.doctor_id)
                         {
                             MessageBox.Show("Выбранные дата и время заняты");
                             InUse = 1;
@@ -197,12 +168,7 @@ namespace Poliklinika_kurs.User
                         var pacient = from a in db.Pacients
                                       where userId.Equals(a.id)
                                       select a.name;
-                        checkTime check = new checkTime()
-                        {
-                            date = dateReg.SelectedDate.ToString().Substring(0, 10),
-                            time = timeReg.Text,
-                        };
-                        DiagnosticIn diagnostic = new DiagnosticIn
+                        RegistrationDoc diagnostic = new RegistrationDoc
                         {
                             doctor = doctorFio.Text,
                             pacient = pacient.FirstOrDefault(),
@@ -211,8 +177,7 @@ namespace Poliklinika_kurs.User
                             date = dateReg.SelectedDate.ToString().Substring(0, 10),
                             time = timeReg.Text
                         };
-                        db.checkTime.Add(check);
-                        db.DiagnosticIn.Add(diagnostic);
+                        db.RegistrationDoc.Add(diagnostic);
                         db.SaveChanges();
                         MessageBox.Show("Вы были успешно зарегестрированны");
                     }
@@ -220,7 +185,7 @@ namespace Poliklinika_kurs.User
             }
             else
             {
-                MessageBox.Show("Выбранная дата некорректна");
+                MessageBox.Show("Были введены не все данные или выбранная дата некорректна");
             }
             
         }
@@ -228,20 +193,49 @@ namespace Poliklinika_kurs.User
         private void doctorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             doctorId = GetDoctorId(doctorList.SelectedItem.ToString());
-            using (Modeldb db = new Modeldb())
+            doctorFio.Text = GetDoctorName(doctorList.SelectedItem.ToString());
+        }
+        private void filterSpec_Click(object sender, RoutedEventArgs e)
+        {
+            if (filterSpec.IsChecked == true)
             {
-                var doctor = from b in db.Doctors
-                             where doctorId == b.id
-                             select b.name;
-                doctorFio.Text = doctor.FirstOrDefault().ToString();
+                specializationBox.Visibility = Visibility.Visible;
             }
-            
+            else
+            {
+                specializationBox.Visibility = Visibility.Hidden;
+            }
+        }
+        private void filterFio_Click(object sender, RoutedEventArgs e)
+        {
+            if (filterFio.IsChecked == true)
+            {
+                fioBox.Visibility = Visibility.Visible;
+
+            }
+            else
+            {
+                fioBox.Visibility = Visibility.Hidden;
+            }
         }
         private int GetDoctorId(string a)
         {
             int index = a.IndexOf(',');
-            int f = int.Parse(a.Substring(startIndex:7,length: index - 7).Trim());
-            return f;
+            int result = int.Parse(a.Substring( 7, index - 7));
+            return result;
         }
+        private string GetDoctorName(string a)
+        {
+            string result = "";
+            int index = a.IndexOf(',');
+            string f = a.Substring(index + 7, a.Length - index - 7);
+            index = f.IndexOf(',');
+            for(int i = 0; i < index; i++)
+            {
+                result += f[i];
+            }
+            return result.Trim();
+        }
+
     }
 }

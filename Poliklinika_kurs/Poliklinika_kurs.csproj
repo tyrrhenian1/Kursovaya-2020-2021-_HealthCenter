@@ -77,11 +77,10 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\checkTime.cs" />
-    <Compile Include="Models\DiagnosticIn.cs" />
     <Compile Include="Models\Doctors.cs" />
     <Compile Include="Models\Modeldb.cs" />
     <Compile Include="Models\Pacients.cs" />
+    <Compile Include="Models\RegistrationDoc.cs" />
     <Compile Include="Models\sysdiagrams.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="RegistrationWindow.xaml.cs">
@@ -101,6 +100,9 @@
     </Compile>
     <Compile Include="User\Medcard.xaml.cs">
       <DependentUpon>Medcard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\RegistrationDocLog.xaml.cs">
+      <DependentUpon>RegistrationDocLog.xaml</DependentUpon>
     </Compile>
     <Compile Include="User\UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
@@ -130,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User\Medcard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User\RegistrationDocLog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,8 +6,8 @@ namespace Poliklinika_kurs.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("DiagnosticIn")]
-    public partial class DiagnosticIn
+    [Table("RegistrationDoc")]
+    public partial class RegistrationDoc
     {
         public int id { get; set; }
 
@@ -26,8 +26,5 @@ namespace Poliklinika_kurs.Models
         public int? doctor_id { get; set; }
 
         public int? pacient_id { get; set; }
-
-        [StringLength(50)]
-        public string status { get; set; }
     }
 }

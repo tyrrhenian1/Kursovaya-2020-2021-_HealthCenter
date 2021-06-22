@@ -20,23 +20,29 @@ namespace Poliklinika_kurs.User
     /// </summary>
     public partial class UserWindow : Window
     {
-        private int UserId { get; set; }
+        private int _userId;
         public UserWindow(int id)
         {
             InitializeComponent();
-            UserId = id;
+            _userId = id;
         }
 
         private void showCard_Click(object sender, RoutedEventArgs e)
         {
-            Medcard medcard = new Medcard(UserId);
+            Medcard medcard = new Medcard(_userId);
             medcard.Show();
         }
 
         private void showDoctors_Click(object sender, RoutedEventArgs e)
         {
-            DoctorsList doctorsList = new DoctorsList(UserId);
+            DoctorsList doctorsList = new DoctorsList(_userId);
             doctorsList.Show();
+        }
+
+        private void showReg_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrationDocLog log = new RegistrationDocLog(_userId);
+            log.Show();
         }
     }
 }

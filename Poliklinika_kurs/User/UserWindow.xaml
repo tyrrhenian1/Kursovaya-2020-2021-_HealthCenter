@@ -8,7 +8,7 @@
         Title="" Height="540" Width="950" FontFamily="Comic Sans MS">
     <Grid>
         <Button x:Name="showCard" Content="Посмотреть свою мед.карту" HorizontalAlignment="Left" Height="78" Margin="10,406,0,0" VerticalAlignment="Top" Width="284" FontSize="20" Click="showCard_Click"/>
-        <Button x:Name="showReg" Content="Посмотреть свои записи" HorizontalAlignment="Left" Height="78" Margin="626,406,0,0" VerticalAlignment="Top" Width="284" FontSize="20" />
+        <Button x:Name="showReg" Content="Посмотреть свои записи" HorizontalAlignment="Left" Height="78" Margin="626,406,0,0" VerticalAlignment="Top" Width="284" FontSize="20" Click="showReg_Click" />
         <Button x:Name="showDoctors" Content="Посмотреть список врачей" HorizontalAlignment="Left" Height="78" VerticalAlignment="Top" Width="284" FontSize="20" Margin="319,406,0,0" Click="showDoctors_Click"/>
         <Image HorizontalAlignment="Center" Height="401" VerticalAlignment="Top" Width="481" Source="/Resources/hospital.png" Margin="224,0,237,0"/>
 
