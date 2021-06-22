@@ -5,15 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Poliklinika_kurs.User"
         mc:Ignorable="d"
-        Title="DoctorsList" Height="694.37" Width="934.106" FontFamily="Comic Sans MS" ResizeMode="NoResize">
+        Title="DoctorsList" Height="965.555" Width="1482.556" FontFamily="Comic Sans MS" ResizeMode="NoResize">
     <Grid>
-        <DataGrid x:Name="doctorList" HorizontalAlignment="Left" Height="464" Margin="10,130,0,0" VerticalAlignment="Top" Width="583" AutoGenerateColumns="True" FontSize="20" HorizontalContentAlignment="Center"/>
+        <DataGrid x:Name="doctorList" HorizontalAlignment="Left" Height="464" Margin="10,130,0,0" VerticalAlignment="Top" Width="605" AutoGenerateColumns="True" FontSize="20" HorizontalContentAlignment="Center" SelectionChanged="doctorList_SelectionChanged"/>
+
         <Label Content="Сортировать по" HorizontalAlignment="Left" Height="49" Margin="10,10,0,0" VerticalAlignment="Top" Width="203" FontSize="25"/>
         <CheckBox x:Name="filterSpec"  Content="Специальности" HorizontalAlignment="Left" Margin="239,22,0,0" VerticalAlignment="Top" Height="25" Width="159" FontSize="18" Click="filterSpec_Click"/>
         <CheckBox x:Name="filterFio" Content="ФИО врача" HorizontalAlignment="Left" Margin="239,55,0,0" VerticalAlignment="Top" Height="25" Width="159" FontSize="18" Click="filterFio_Click"/>
         <ComboBox x:Name="specializationBox" HorizontalAlignment="Left" Margin="11,84,0,0" VerticalAlignment="Top" Width="218" Height="29" Visibility="Hidden" SelectionChanged="specializationBox_SelectionChanged"/>
         <ComboBox x:Name="fioBox" HorizontalAlignment="Left" Margin="239,84,0,0" VerticalAlignment="Top" Width="218" Height="29" Visibility="Hidden" SelectionChanged="fioBox_SelectionChanged"/>
-        <Button Content="Сброс" HorizontalAlignment="Left" Height="103" Margin="475,10,0,0" VerticalAlignment="Top" Width="118" FontSize="26" Click="Button_Click"/>
+        <Button Content="Сброс" HorizontalAlignment="Left" Height="103" Margin="497,11,0,0" VerticalAlignment="Top" Width="118" FontSize="26" Click="Button_Click"/>
+        <Button Content="Записаться на прием" HorizontalAlignment="Left" Height="66" Margin="11,850,0,0" VerticalAlignment="Top" Width="604" FontSize="30" Click="Button_Click_1"/>
+        <DatePicker x:Name="dateReg" HorizontalAlignment="Left" Margin="11,746,0,0" VerticalAlignment="Top" Height="37" Width="270" FontSize="20" SelectedDateFormat="Short"/>
+        <ComboBox x:Name="timeReg" HorizontalAlignment="Left" Height="37" Margin="307,746,0,0" VerticalAlignment="Top" Width="308" RenderTransformOrigin="0.482,1.329" FontSize="20">
+            <TextBlock>8:00-8:30</TextBlock>
+            <TextBlock>8:30-9:00</TextBlock>
+            <TextBlock>9:00-9:30</TextBlock>
+            <TextBlock>9:30-10:00</TextBlock>
+            <TextBlock>10:00-10:30</TextBlock>
+            <TextBlock>10:30-11:00</TextBlock>
+            <TextBlock>11:00-11:30</TextBlock>
+            <TextBlock>11:30-12:00</TextBlock>
+            <TextBlock>12:00-12:30</TextBlock>
+            <TextBlock>12:30-13:00</TextBlock>
+        </ComboBox>
+        <Label Content="Дата" HorizontalAlignment="Left" Height="58" Margin="12,675,0,0" VerticalAlignment="Top" Width="269" FontSize="30" HorizontalContentAlignment="Center"/>
+        <Label Content="Время" HorizontalAlignment="Left" Height="58" Margin="307,675,0,0" VerticalAlignment="Top" Width="308" FontSize="30" HorizontalContentAlignment="Center"/>
+        <Label Content="Врач" HorizontalAlignment="Left" Height="58" Margin="12,599,0,0" VerticalAlignment="Top" Width="269" FontSize="30" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="doctorFio" Text="" HorizontalAlignment="Left" Height="58" Margin="307,599,0,0" VerticalAlignment="Top" Width="308" RenderTransformOrigin="0.593,0.66" FontSize="20"/>
+        <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" Height="58" Margin="785,84,0,0" VerticalAlignment="Top" Width="264" FontSize="25"/>
+        <Label x:Name="label2" Content="Label" HorizontalAlignment="Left" Height="58" Margin="785,170,0,0" VerticalAlignment="Top" Width="264" FontSize="25"/>
+        <Label x:Name="label3" Content="Label" HorizontalAlignment="Left" Height="58" Margin="785,259,0,0" VerticalAlignment="Top" Width="264" FontSize="25"/>
+        <TextBox x:Name="label4" Text="" HorizontalAlignment="Left" Height="450" Margin="785,353,0,0" VerticalAlignment="Top" Width="682" FontSize="25"/>
 
     </Grid>
 </Window>

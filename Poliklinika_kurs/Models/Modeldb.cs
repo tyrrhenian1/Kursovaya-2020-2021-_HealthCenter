@@ -8,10 +8,11 @@ namespace Poliklinika_kurs.Models
     public partial class Modeldb : DbContext
     {
         public Modeldb()
-            : base("name=Modeldb")
+            : base("name=Modeldb2")
         {
         }
 
+        public virtual DbSet<checkTime> checkTime { get; set; }
         public virtual DbSet<DiagnosticIn> DiagnosticIn { get; set; }
         public virtual DbSet<Doctors> Doctors { get; set; }
         public virtual DbSet<Pacients> Pacients { get; set; }
@@ -20,6 +21,22 @@ namespace Poliklinika_kurs.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<checkTime>()
+                .Property(e => e.date)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<checkTime>()
+                .Property(e => e.time)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DiagnosticIn>()
+                .Property(e => e.date)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DiagnosticIn>()
+                .Property(e => e.time)
+                .IsUnicode(false);
+
             modelBuilder.Entity<DiagnosticIn>()
                 .Property(e => e.doctor)
                 .IsUnicode(false);
@@ -29,7 +46,7 @@ namespace Poliklinika_kurs.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<DiagnosticIn>()
-                .Property(e => e.diagnostic)
+                .Property(e => e.status)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Doctors>()
