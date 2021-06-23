@@ -13,6 +13,7 @@ namespace Poliklinika_kurs.Models
         }
 
         public virtual DbSet<Doctors> Doctors { get; set; }
+        public virtual DbSet<HistoryDes> HistoryDes { get; set; }
         public virtual DbSet<Pacients> Pacients { get; set; }
         public virtual DbSet<RegistrationDoc> RegistrationDoc { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
@@ -30,6 +31,22 @@ namespace Poliklinika_kurs.Models
 
             modelBuilder.Entity<Doctors>()
                 .Property(e => e.expirience)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HistoryDes>()
+                .Property(e => e.date)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HistoryDes>()
+                .Property(e => e.doctor)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HistoryDes>()
+                .Property(e => e.pacient)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<HistoryDes>()
+                .Property(e => e.verdict)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Pacients>()
@@ -54,10 +71,6 @@ namespace Poliklinika_kurs.Models
 
             modelBuilder.Entity<RegistrationDoc>()
                 .Property(e => e.pacient)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<RegistrationDoc>()
-                .Property(e => e.verdict)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Users>()

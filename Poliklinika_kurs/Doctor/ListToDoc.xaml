@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Poliklinika_kurs.Doctor"
         mc:Ignorable="d"
-        Title="Записи к доктору" Height="511.875" Width="676.25" FontFamily="Comic Sans MS" ResizeMode="NoResize">
+        Title="Записи к доктору" Height="511.875" Width="799.099" FontFamily="Comic Sans MS" ResizeMode="NoResize">
     <Grid>
         <DataGrid x:Name="regList" HorizontalAlignment="Left" Height="332" Margin="10,76,0,0" VerticalAlignment="Top" Width="630" AutoGenerateColumns="True" FontSize="20" HorizontalContentAlignment="Center"/>
-        <Label x:Name="nameLab" Content="" HorizontalAlignment="Left" Height="49" Margin="10,10,0,0" VerticalAlignment="Top" Width="534" FontSize="20"/>
+        <Label x:Name="nameLab" Content="" HorizontalAlignment="Left" Height="49" Margin="10,10,0,0" VerticalAlignment="Top" Width="630" FontSize="20"/>
         <Button Content="Отменить запись" HorizontalAlignment="Left" Height="48" Margin="10,413,0,0" VerticalAlignment="Top" Width="242" FontSize="28" Click="Button_Click" />
-        <Button Content="Поставить диагноз" HorizontalAlignment="Left" Height="48" Margin="378,413,0,0" VerticalAlignment="Top" Width="262" FontSize="28" />
+        <Button Content="Поставить диагноз" HorizontalAlignment="Left" Height="48" Margin="378,413,0,0" VerticalAlignment="Top" Width="262" FontSize="28" Click="Button_Click_1" />
+        <Button Content="Обновить" HorizontalAlignment="Left" Height="64" Margin="655,344,0,0" VerticalAlignment="Top" Width="118" FontSize="20" Click="Button_Click_2"/>
     </Grid>
 </Window>

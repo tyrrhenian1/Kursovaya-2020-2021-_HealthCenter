@@ -39,8 +39,7 @@ namespace Poliklinika_kurs.Doctor
                                 id = a.id,
                                 Пациент = a.pacient,
                                 Дата = a.date,
-                                Время = a.time,
-                                Диагноз = a.verdict
+                                Время = a.time
                             };
                 regList.ItemsSource = query.ToList();
                 var name = db.Doctors.Where(x => x.id == _userId).FirstOrDefault();
@@ -65,11 +64,30 @@ namespace Poliklinika_kurs.Doctor
                 MessageBox.Show("Запись не была выбрана");
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (regList.SelectedIndex != -1)
+            {
+                int regId = GetRegId(regList.SelectedItem.ToString());
+                VerdictWindow verdict = new VerdictWindow(regId);
+                verdict.Show();
+            }
+            else
+            {
+                MessageBox.Show("Запись не была выбрана");
+            }
+        }
         private int GetRegId(string a)
         {
             int index = a.IndexOf(',');
             int result = int.Parse(a.Substring(7, index - 7));
             return result;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Update();
         }
     }
 }

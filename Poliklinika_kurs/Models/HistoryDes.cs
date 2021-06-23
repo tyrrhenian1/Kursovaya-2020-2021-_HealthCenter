@@ -6,16 +6,12 @@ namespace Poliklinika_kurs.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("RegistrationDoc")]
-    public partial class RegistrationDoc
+    public partial class HistoryDes
     {
         public int id { get; set; }
 
         [StringLength(50)]
         public string date { get; set; }
-
-        [StringLength(50)]
-        public string time { get; set; }
 
         [StringLength(50)]
         public string doctor { get; set; }
@@ -26,5 +22,8 @@ namespace Poliklinika_kurs.Models
         public int? doctor_id { get; set; }
 
         public int? pacient_id { get; set; }
+
+        [StringLength(50)]
+        public string verdict { get; set; }
     }
 }
