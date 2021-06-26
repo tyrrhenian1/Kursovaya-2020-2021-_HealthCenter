@@ -14,7 +14,7 @@
         <Label Content="Место жительства" HorizontalAlignment="Left" Height="50" Margin="299,137,0,0" VerticalAlignment="Top" Width="234" FontSize="26" HorizontalContentAlignment="Right"/>
         <Label x:Name="addressBox" Content="" HorizontalAlignment="Left" Height="50" Margin="549,137,0,0" VerticalAlignment="Top" Width="349" FontSize="26"/>
         <Image HorizontalAlignment="Left" Height="224" VerticalAlignment="Top" Width="289" Source="/Resources/user.jpg" Stretch="Fill"/>
-        <Button Content="История болезней" HorizontalAlignment="Left" Height="74" Margin="10,335,0,0" VerticalAlignment="Top" Width="906" FontSize="28"/>
+        <Button Content="История болезней" HorizontalAlignment="Left" Height="74" Margin="10,335,0,0" VerticalAlignment="Top" Width="906" FontSize="28" Click="Button_Click"/>
 
     </Grid>
 </Window>

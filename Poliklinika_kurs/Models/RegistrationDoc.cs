@@ -11,8 +11,8 @@ namespace Poliklinika_kurs.Models
     {
         public int id { get; set; }
 
-        [StringLength(50)]
-        public string date { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? date { get; set; }
 
         [StringLength(50)]
         public string time { get; set; }

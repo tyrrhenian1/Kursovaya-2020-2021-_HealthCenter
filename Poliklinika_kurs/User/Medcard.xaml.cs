@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Poliklinika_kurs.Models;
 using Poliklinika_kurs.Resources;
+using Poliklinika_kurs.Doctor;
 
 namespace Poliklinika_kurs.User
 {
@@ -21,15 +22,15 @@ namespace Poliklinika_kurs.User
     /// </summary>
     public partial class Medcard : Window
     {
-        private int UserId { get; set; }
+        private int _userId;
         public Medcard(int id)
         {
             InitializeComponent();
-            UserId = id;
+            _userId = id;
             using (Modeldb db = new Modeldb())
             {
                 var query = from a in db.Pacients
-                            where UserId == a.id
+                            where _userId == a.id
                             select a;
                 if(query.Count() != 0)
                 {
@@ -41,6 +42,12 @@ namespace Poliklinika_kurs.User
                     }
                 }
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            HistoryVisitWindow history = new HistoryVisitWindow(_userId);
+            history.Show();
         }
     }
 }

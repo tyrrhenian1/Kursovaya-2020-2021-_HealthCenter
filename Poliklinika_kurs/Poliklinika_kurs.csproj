@@ -74,6 +74,9 @@
     <Compile Include="Doctor\DoctorWindow.xaml.cs">
       <DependentUpon>DoctorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\HistoryvVisitWindow.xaml.cs">
+      <DependentUpon>HistoryvVisitWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Doctor\ListToDoc.xaml.cs">
       <DependentUpon>ListToDoc.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
     <Page Include="Doctor\DoctorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Doctor\HistoryvVisitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Doctor\ListToDoc.xaml">
       <SubType>Designer</SubType>

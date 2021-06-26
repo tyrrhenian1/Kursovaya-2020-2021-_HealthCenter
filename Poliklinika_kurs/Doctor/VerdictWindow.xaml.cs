@@ -21,7 +21,7 @@ namespace Poliklinika_kurs.Doctor
     public partial class VerdictWindow : Window
     {
         private int _stringId;
-        private string _date;
+        private DateTime? _date;
         private string _pacient;
         private string _doctor;
         private int? _doctorId;

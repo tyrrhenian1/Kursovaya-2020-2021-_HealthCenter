@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -140,11 +141,11 @@ namespace Poliklinika_kurs.User
                 doctorList.SelectedIndex != -1 &&
                 timeReg.SelectedItem != null)
             {
+                string dateRegistration = GetDate(dateReg.SelectedDate.ToString());
                 using (Modeldb db = new Modeldb())
                 {
-                    string dateRegistration = dateReg.SelectedDate.ToString().Substring(0, 10);
                     var checkDate = from a in db.RegistrationDoc
-                                    where dateRegistration.Equals(a.date)
+                                    where dateRegistration.Equals(a.date.ToString())
                                      select a;
                     foreach (var i in checkDate)
                     {
@@ -174,7 +175,7 @@ namespace Poliklinika_kurs.User
                             pacient = pacient.FirstOrDefault(),
                             doctor_id = doctorId,
                             pacient_id = userId,
-                            date = dateReg.SelectedDate.ToString().Substring(0, 10),
+                            date = dateReg.SelectedDate,
                             time = timeReg.Text
                         };
                         db.RegistrationDoc.Add(diagnostic);
@@ -192,8 +193,11 @@ namespace Poliklinika_kurs.User
 
         private void doctorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            doctorId = GetDoctorId(doctorList.SelectedItem.ToString());
-            doctorFio.Text = GetDoctorName(doctorList.SelectedItem.ToString());
+            if (doctorList.SelectedIndex != -1)
+            {
+                doctorId = GetDoctorId(doctorList.SelectedItem.ToString());
+                doctorFio.Text = GetDoctorName(doctorList.SelectedItem.ToString());
+            }
         }
         private void filterSpec_Click(object sender, RoutedEventArgs e)
         {
@@ -237,5 +241,19 @@ namespace Poliklinika_kurs.User
             return result.Trim();
         }
 
+        private string GetDate(string a)
+        {
+            string result = "";
+            string[] date = a.Split('.');
+            date[2] = date[2].Substring(0, 4);
+            result = $"{date[2]}-{date[1]}-{date[0]}";
+            return result.Trim();
+        }
+
+        private void dateReg_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string dateRegistration = GetDate(dateReg.SelectedDate.ToString());
+            test.Content = dateRegistration;
+        }
     }
 }

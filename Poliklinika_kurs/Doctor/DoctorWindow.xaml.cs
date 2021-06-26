@@ -44,5 +44,11 @@ namespace Poliklinika_kurs.Doctor
             ListToDoc toDoc = new ListToDoc(_userId);
             toDoc.Show();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            HistoryVisitWindow history = new HistoryVisitWindow(_userId);
+            history.Show();
+        }
     }
 }

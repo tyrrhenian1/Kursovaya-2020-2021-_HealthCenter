@@ -34,10 +34,6 @@ namespace Poliklinika_kurs.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<HistoryDes>()
-                .Property(e => e.date)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<HistoryDes>()
                 .Property(e => e.doctor)
                 .IsUnicode(false);
 
@@ -55,10 +51,6 @@ namespace Poliklinika_kurs.Models
 
             modelBuilder.Entity<Pacients>()
                 .Property(e => e.adress)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<RegistrationDoc>()
-                .Property(e => e.date)
                 .IsUnicode(false);
 
             modelBuilder.Entity<RegistrationDoc>()

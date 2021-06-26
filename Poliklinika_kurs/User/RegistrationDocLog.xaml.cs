@@ -38,7 +38,7 @@ namespace Poliklinika_kurs.User
                             {
                                 id = a.id,
                                 Врач = a.doctor,
-                                Дата = a.date,
+                                Дата = a.date.ToString(),
                                 Время = a.time
                             };
                 regList.ItemsSource = query.ToList();
