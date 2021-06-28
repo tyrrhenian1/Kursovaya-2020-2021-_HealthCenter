@@ -253,7 +253,6 @@ namespace Poliklinika_kurs.User
         private void dateReg_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             string dateRegistration = GetDate(dateReg.SelectedDate.ToString());
-            test.Content = dateRegistration;
         }
     }
 }

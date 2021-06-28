@@ -8,9 +8,7 @@
         Title="" Height="450" Width="934.106" FontFamily="Comic Sans MS">
     <Grid>
         <Image HorizontalAlignment="Left" Height="224" VerticalAlignment="Top" Width="289" Source="/Resources/admin.jpg" Stretch="Fill"/>
-        <Button Content="Посмотреть список врачей" HorizontalAlignment="Left" Height="61" Margin="10,348,0,0" VerticalAlignment="Top" Width="376" FontSize="28"/>
+        <Button Content="Посмотреть список врачей" HorizontalAlignment="Left" Height="61" Margin="10,348,0,0" VerticalAlignment="Top" Width="376" FontSize="28" Click="Button_Click_1"/>
         <Button Content="Добавить нового врача" HorizontalAlignment="Left" Height="61" Margin="549,348,0,0" VerticalAlignment="Top" Width="376" FontSize="28" Click="Button_Click"/>
-        <Button Content="Визиты к врачам" HorizontalAlignment="Left" Height="61" Margin="10,282,0,0" VerticalAlignment="Top" Width="376" FontSize="28"/>
-        <Button Content="Статистика заболеваний" HorizontalAlignment="Left" Height="61" Margin="549,282,0,0" VerticalAlignment="Top" Width="376" FontSize="28"/>
     </Grid>
 </Window>
